@@ -1,5 +1,13 @@
+import React from "react";
+import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
+
 function SavedNews() {
-  return <h1>Artigos Salvos</h1>;
+  return (
+    <div className="savednews">
+      <h1 className="savednews__title">Artigos Salvos</h1>
+      <SavedNewsHeader />
+    </div>
+  );
 }
 
 export default SavedNews;
