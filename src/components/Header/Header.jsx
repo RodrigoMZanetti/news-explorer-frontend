@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
 function Header() {
   return (
@@ -7,13 +8,7 @@ function Header() {
       <Link to="/" className="header__logo">
         NewsExplorer
       </Link>
-      <Link to="/" className="header__link">
-        Início
-      </Link>
-      <Link to="/saved-news" className="header__link">
-        Artigos Salvos
-      </Link>
-      <button className="header__button">Entrar</button>
+      <Navigation />
     </header>
   );
 }
