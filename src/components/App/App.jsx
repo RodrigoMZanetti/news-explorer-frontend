@@ -5,9 +5,27 @@ import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Footer from "../Footer/Footer";
+import { searchNews } from "../../utils/NewsApi";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  async function handleSearch(query) {
+    setIsLoading(true);
+    try {
+      const resultado = await searchNews(query);
+      setArticles(resultado);
+    } catch (error) {
+      console.error("Ocorreu um erro:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <>
       <BrowserRouter>
