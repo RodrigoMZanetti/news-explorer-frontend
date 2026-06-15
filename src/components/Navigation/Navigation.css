@@ -23,3 +23,29 @@
   padding: 8px 20px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .navigation {
+    gap: 8px;
+  }
+
+  .navigation__link {
+    font-size: 16px;
+  }
+
+  .navigation__button {
+    font-size: 16px;
+    padding: 6px 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .navigation__link {
+    font-size: 14px;
+  }
+
+  .navigation__button {
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+}

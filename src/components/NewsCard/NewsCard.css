@@ -65,3 +65,23 @@
   padding: 16px 24px;
   letter-spacing: 0.4px;
 }
+
+@media (max-width: 768px) {
+  .newscard__title {
+    font-size: 18px;
+  }
+
+  .newscard__description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .newscard__image {
+    height: 150px;
+  }
+
+  .newscard__title {
+    font-size: 16px;
+  }
+}

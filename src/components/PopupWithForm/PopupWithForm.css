@@ -78,3 +78,26 @@
   margin-top: 16px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .popupwithform__form {
+    width: 90%;
+    padding: 24px;
+  }
+
+  .popupwithform__title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .popupwithform__form {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .popupwithform__access-button {
+    font-size: 16px;
+    padding: 16px;
+  }
+}

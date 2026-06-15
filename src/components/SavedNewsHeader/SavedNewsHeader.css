@@ -33,3 +33,32 @@
   color: #1a1b22;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .savednewsheader {
+    padding: 40px;
+  }
+
+  .savednewsheader__title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .savednewsheader__text {
+    font-size: 16px;
+  }
+
+  .savednewsheader__keywords {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .savednewsheader {
+    padding: 24px 16px;
+  }
+
+  .savednewsheader__title {
+    font-size: 24px;
+  }
+}

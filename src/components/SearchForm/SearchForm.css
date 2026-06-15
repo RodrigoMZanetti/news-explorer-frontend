@@ -63,3 +63,40 @@
 .searchform__button:hover {
   background-color: #347eff;
 }
+
+@media (max-width: 768px) {
+  .searchform {
+    padding: 48px 40px;
+  }
+
+  .searchform__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .searchform__subtitle {
+    font-size: 16px;
+    margin: 0 0 48px;
+  }
+
+  .searchform__form {
+    max-width: 100%;
+  }
+
+  .searchform__button {
+    padding: 0 32px;
+    height: 56px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .searchform {
+    padding: 24px 16px;
+  }
+
+  .searchform__title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
