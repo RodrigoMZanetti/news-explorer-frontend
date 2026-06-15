@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./PopupWithForm.css";
 
 function PopupWithForm({ link, title, buttonText, isOpen, onClose }) {
   useEffect(() => {

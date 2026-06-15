@@ -11,7 +11,13 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <PopupWithForm isOpen={openModal} onClose={() => setOpenModal(false)} />
+        <PopupWithForm
+          isOpen={openModal}
+          onClose={() => setOpenModal(false)}
+          title="Entrar"
+          buttonText="Entrar"
+          link="ou Inscreva-se"
+        />
         <Header onOpenModal={() => setOpenModal(true)} />
         <Routes>
           <Route path="/" element={<Main />} />
