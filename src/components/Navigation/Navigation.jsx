@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navigation.css";
 
-function Navigation() {
+function Navigation({ onOpenModal }) {
   return (
     <nav className="navigation">
       <Link to="/" className="navigation__link">
@@ -11,7 +11,9 @@ function Navigation() {
       <Link to="/saved-news" className="navigation__link">
         Artigos Salvos
       </Link>
-      <button className="navigation__button">Entrar</button>
+      <button className="navigation__button" onClick={onOpenModal}>
+        Entrar
+      </button>
     </nav>
   );
 }

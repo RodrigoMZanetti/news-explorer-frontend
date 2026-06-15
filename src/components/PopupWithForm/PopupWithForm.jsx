@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function PopupWithForm({ link, title, buttonText }) {
+function PopupWithForm({ link, title, buttonText, isOpen, onClose }) {
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
+
+  if (!isOpen) return null;
   return (
-    <div className="popupwithform">
-      <form className="popupwithform__form" action="">
-        <button className="popupwithform__close-button">X</button>
+    <div className="popupwithform" onClick={onClose}>
+      <form
+        className="popupwithform__form"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="popupwithform__close-button" onClick={onClose}>
+          X
+        </button>
         <h1 className="popupwithform__title">{title}</h1>
         <input
           className="popupwithform__input"
