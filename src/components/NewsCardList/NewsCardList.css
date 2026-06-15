@@ -1,0 +1,49 @@
+.newscardlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 104px;
+  background-color: #f5f6f7;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.newscardlist__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+  align-self: flex-start;
+  margin: 0 0 64px;
+}
+
+.newscardlist__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 64px;
+}
+
+.newscardlist__item {
+  position: relative;
+}
+
+.newscardlist__button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1a1b22;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  padding: 20px 80px;
+  cursor: pointer;
+}
+
+.newscardlist__button:hover {
+  background-color: #e8e8e8;
+}

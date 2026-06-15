@@ -1,0 +1,25 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navigation__link {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navigation__button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  padding: 8px 20px;
+  cursor: pointer;
+}

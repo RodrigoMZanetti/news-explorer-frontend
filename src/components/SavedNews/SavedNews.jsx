@@ -1,5 +1,6 @@
 import React from "react";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
+import "./SavedNews.css";
 
 function SavedNews() {
   return (
