@@ -101,3 +101,12 @@
 .newscard__icon:hover {
   opacity: 0.7;
 }
+
+.newscard__icon {
+  color: #b6bcbf;
+  transition: color 0.3s ease;
+}
+
+.newscard__icon:hover {
+  color: #1a1b22;
+}

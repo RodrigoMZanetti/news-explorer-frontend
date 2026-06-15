@@ -8,8 +8,8 @@
 }
 
 .about__image {
-  width: 464px;
-  height: 464px;
+  width: 315px;
+  height: 315px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -67,4 +67,10 @@
   .about__title {
     font-size: 24px;
   }
+}
+
+.about__text-container {
+  max-width: 516px;
+  margin: 0;
+  padding: 0;
 }

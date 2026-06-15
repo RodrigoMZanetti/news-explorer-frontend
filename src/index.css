@@ -63,3 +63,13 @@
     url("./vendor/inter-500.woff") format("woff");
   font-weight: 500;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 1440px;
+  margin: 0 auto;
+}

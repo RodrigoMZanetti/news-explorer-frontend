@@ -8,7 +8,7 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -21,9 +21,9 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
-  color: #ffffff;
+  color: #000000;
   background-color: transparent;
-  border: 1px solid #ffffff;
+  border: 1px solid #000000;
   border-radius: 100px;
   padding: 8px 20px;
   cursor: pointer;
