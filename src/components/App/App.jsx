@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -33,6 +33,13 @@ function App() {
     setVisibleCount(visibleCount + 3);
     return;
   }
+
+  useEffect(() => {
+    const allArticles = localStorage.getItem("articles");
+    if (allArticles) {
+      setArticles(JSON.parse(allArticles));
+    }
+  }, []);
 
   return (
     <>
