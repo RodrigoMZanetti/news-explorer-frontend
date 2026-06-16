@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm() {
+function SearchForm({ handleSearch }) {
+  const [query, setQuery] = useState("");
+  const [error, setError] = useState("");
+
+  function handleSubmit(query) {
+    if (query === "") {
+      setError("Por favor, insira uma palavra-chave");
+      return;
+    } else {
+      handleSearch(query);
+      return;
+    }
+  }
+
   return (
     <div className="searchform">
       <h1 className="searchform__title">O que está acontecendo no mundo?</h1>
@@ -12,8 +25,16 @@ function SearchForm() {
           className="searchform__input"
           type="text"
           placeholder="Inserir tema"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="searchform__button">Procurar</button>
+        <span className="searchform__error">{error}</span>
+        <button
+          className="searchform__button"
+          onClick={() => handleSubmit(query)}
+        >
+          Procurar
+        </button>
       </form>
     </div>
   );

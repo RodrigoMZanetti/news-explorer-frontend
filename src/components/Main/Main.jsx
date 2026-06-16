@@ -4,10 +4,10 @@ import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import "./Main.css";
 
-function Main() {
+function Main({ handleSearch }) {
   return (
     <>
-      <SearchForm />
+      <SearchForm handleSearch={handleSearch} />
       <NewsCardList />
       <About />
     </>
