@@ -9,7 +9,9 @@ function NewsCardList({
   visibleCount,
   error,
   handleVisibleCount,
+  hasSearched,
 }) {
+  if (!hasSearched) return null;
   return (
     <div className="newscardlist">
       <h1 className="newscardlist__title">Procurar resultados</h1>

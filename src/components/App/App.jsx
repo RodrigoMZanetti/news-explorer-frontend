@@ -13,16 +13,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
+  const [hasSearched, setHasSearched] = useState(false);
 
   async function handleSearch(query) {
-    console.log("handleSearch chamado com:", query);
     setIsLoading(true);
+    setHasSearched(true);
     try {
       const resultado = await searchNews(query);
-      console.log(resultado);
       setArticles(resultado.articles);
-      const articlesJSON = JSON.stringify(resultado);
-      localStorage.setItem("articles", articlesJSON);
+      localStorage.setItem("articles", JSON.stringify(resultado.articles));
     } catch (error) {
       console.error("Ocorreu um erro:", error);
       setError(true);
@@ -40,11 +39,12 @@ function App() {
     const allArticles = localStorage.getItem("articles");
     if (allArticles) {
       setArticles(JSON.parse(allArticles));
+      setHasSearched(true);
     }
   }, []);
 
   return (
-    <>
+    <div className="app">
       <BrowserRouter>
         <PopupWithForm
           isOpen={openModal}
@@ -65,6 +65,7 @@ function App() {
                 visibleCount={visibleCount}
                 error={error}
                 handleVisibleCount={handleVisibleCount}
+                hasSearched={hasSearched}
               />
             }
           />
@@ -72,7 +73,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

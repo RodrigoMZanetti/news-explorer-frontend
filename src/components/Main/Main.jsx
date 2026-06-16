@@ -11,6 +11,7 @@ function Main({
   visibleCount,
   error,
   handleVisibleCount,
+  hasSearched,
 }) {
   return (
     <>
@@ -21,6 +22,7 @@ function Main({
         visibleCount={visibleCount}
         error={error}
         handleVisibleCount={handleVisibleCount}
+        hasSearched={hasSearched}
       />
       <About />
     </>
