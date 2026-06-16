@@ -21,9 +21,15 @@ function App() {
       setArticles(resultado);
     } catch (error) {
       console.error("Ocorreu um erro:", error);
+      setError(true);
     } finally {
       setIsLoading(false);
     }
+  }
+
+  function handleVisibleCount() {
+    setVisibleCount(visibleCount + 3);
+    return;
   }
 
   return (
@@ -46,6 +52,8 @@ function App() {
                 articles={articles}
                 isLoading={isLoading}
                 visibleCount={visibleCount}
+                error={error}
+                handleVisibleCount={handleVisibleCount}
               />
             }
           />

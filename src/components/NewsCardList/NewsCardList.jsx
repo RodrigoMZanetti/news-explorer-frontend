@@ -3,7 +3,13 @@ import NewsCard from "../NewsCard/NewsCard";
 import "./NewsCardList.css";
 import Preloader from "../Preloader/Preloader";
 
-function NewsCardList({ articles, isLoading, visibleCount, error }) {
+function NewsCardList({
+  articles,
+  isLoading,
+  visibleCount,
+  error,
+  handleVisibleCount,
+}) {
   return (
     <div className="newscardlist">
       <h1 className="newscardlist__title">Procurar resultados</h1>
@@ -19,7 +25,7 @@ function NewsCardList({ articles, isLoading, visibleCount, error }) {
         ) : articles.length === 0 ? (
           <p>Nada encontrado</p>
         ) : (
-          articles.map((article) => {
+          articles.slice(0, visibleCount).map((article) => {
             return (
               <li key={article.url}>
                 <NewsCard
@@ -34,7 +40,9 @@ function NewsCardList({ articles, isLoading, visibleCount, error }) {
           })
         )}
       </ul>
-      <button className="newscardlist__button">Mostrar mais</button>
+      <button className="newscardlist__button" onClick={handleVisibleCount}>
+        Mostrar mais
+      </button>
     </div>
   );
 }
