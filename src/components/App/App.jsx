@@ -19,6 +19,8 @@ function App() {
     try {
       const resultado = await searchNews(query);
       setArticles(resultado);
+      const articlesJSON = JSON.stringify(resultado);
+      localStorage.setItem("articles", articlesJSON);
     } catch (error) {
       console.error("Ocorreu um erro:", error);
       setError(true);
