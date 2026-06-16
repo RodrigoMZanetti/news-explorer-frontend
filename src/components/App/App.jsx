@@ -38,7 +38,17 @@ function App() {
         />
         <Header onOpenModal={() => setOpenModal(true)} />
         <Routes>
-          <Route path="/" element={<Main handleSearch={handleSearch} />} />
+          <Route
+            path="/"
+            element={
+              <Main
+                handleSearch={handleSearch}
+                articles={articles}
+                isLoading={isLoading}
+                visibleCount={visibleCount}
+              />
+            }
+          />
           <Route path="/saved-news" element={<SavedNews />} />
         </Routes>
         <Footer />
