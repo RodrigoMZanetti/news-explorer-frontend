@@ -15,10 +15,12 @@ function App() {
   const [visibleCount, setVisibleCount] = useState(3);
 
   async function handleSearch(query) {
+    console.log("handleSearch chamado com:", query);
     setIsLoading(true);
     try {
       const resultado = await searchNews(query);
-      setArticles(resultado);
+      console.log(resultado);
+      setArticles(resultado.articles);
       const articlesJSON = JSON.stringify(resultado);
       localStorage.setItem("articles", articlesJSON);
     } catch (error) {

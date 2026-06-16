@@ -30,6 +30,7 @@ function SearchForm({ handleSearch }) {
         />
         <span className="searchform__error">{error}</span>
         <button
+          type="button"
           className="searchform__button"
           onClick={() => handleSubmit(query)}
         >
