@@ -4,7 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import "./Main.css";
 
-function Main({ handleSearch, articles, isLoading, visibleCount }) {
+function Main({ handleSearch, articles, isLoading, visibleCount, error }) {
   return (
     <>
       <SearchForm handleSearch={handleSearch} />
@@ -12,6 +12,7 @@ function Main({ handleSearch, articles, isLoading, visibleCount }) {
         articles={articles}
         isLoading={isLoading}
         visibleCount={visibleCount}
+        error={error}
       />
       <About />
     </>
