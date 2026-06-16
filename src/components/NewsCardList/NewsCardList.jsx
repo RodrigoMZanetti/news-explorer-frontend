@@ -40,9 +40,11 @@ function NewsCardList({
           })
         )}
       </ul>
-      <button className="newscardlist__button" onClick={handleVisibleCount}>
-        Mostrar mais
-      </button>
+      {visibleCount >= articles.length ? null : (
+        <button className="newscardlist__button" onClick={handleVisibleCount}>
+          Mostrar mais
+        </button>
+      )}
     </div>
   );
 }
