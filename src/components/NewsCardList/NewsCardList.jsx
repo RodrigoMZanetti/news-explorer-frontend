@@ -16,6 +16,8 @@ function NewsCardList({ articles, isLoading, visibleCount, error }) {
             problema de conexão ou o servidor pode estar inativo. Por favor,
             tente novamente mais tarde.
           </p>
+        ) : articles.length === 0 ? (
+          <p>Nada encontrado</p>
         ) : (
           articles.map((article) => {
             return (
