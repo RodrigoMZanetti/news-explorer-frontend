@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./PopupWithForm.css";
 
-function PopupWithForm({ link, title, buttonText, isOpen, onClose }) {
+function PopupWithForm({ link, title, buttonText, isOpen, onClose, onSwitch }) {
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") onClose();
@@ -31,9 +31,18 @@ function PopupWithForm({ link, title, buttonText, isOpen, onClose }) {
           type="password"
           placeholder="Senha"
         />
+        {title === "Inscrever-se" && (
+          <input
+            className="popupwithform__input"
+            type="text"
+            placeholder="Nome de usuário"
+          />
+        )}
         <button className="popupwithform__access-button">{buttonText}</button>
+        <a className="popupwithform__link" onClick={onSwitch}>
+          {link}
+        </a>
       </form>
-      <a className="popupwithform__link">{link}</a>
     </div>
   );
 }

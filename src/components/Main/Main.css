@@ -4,7 +4,15 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {
+.header__background {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 1024px) {
   .main {
     width: 100%;
   }

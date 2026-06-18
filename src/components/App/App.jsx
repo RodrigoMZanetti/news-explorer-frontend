@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "../Header/Header";
+
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/NewsApi";
 
 function App() {
-  const [openModal, setOpenModal] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -47,18 +47,27 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <PopupWithForm
-          isOpen={openModal}
-          onClose={() => setOpenModal(false)}
+          isOpen={activeModal === "login"}
+          onClose={() => setActiveModal(null)}
+          onSwitch={() => setActiveModal("signup")}
           title="Entrar"
           buttonText="Entrar"
           link="ou Inscreva-se"
         />
-        <Header onOpenModal={() => setOpenModal(true)} />
+        <PopupWithForm
+          isOpen={activeModal === "signup"}
+          onClose={() => setActiveModal(null)}
+          onSwitch={() => setActiveModal("login")}
+          title="Inscrever-se"
+          buttonText="Inscrever"
+          link="ou Faça Login"
+        />
         <Routes>
           <Route
             path="/"
             element={
               <Main
+                onOpenModal={() => setActiveModal("login")}
                 handleSearch={handleSearch}
                 articles={articles}
                 isLoading={isLoading}
@@ -69,7 +78,10 @@ function App() {
               />
             }
           />
-          <Route path="/saved-news" element={<SavedNews />} />
+          <Route
+            path="/saved-news"
+            element={<SavedNews onOpenModal={() => setActiveModal("login")} />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

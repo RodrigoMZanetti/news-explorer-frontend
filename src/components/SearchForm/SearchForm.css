@@ -8,7 +8,6 @@
   background-position: center;
   box-sizing: border-box;
   width: 100%;
-  background-image: url("../../images/header.jpg");
 }
 
 .searchform__title {
@@ -65,7 +64,7 @@
   background-color: #347eff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .searchform {
     padding: 48px 40px;
   }
@@ -91,7 +90,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 544px) {
   .searchform {
     padding: 24px 16px;
   }

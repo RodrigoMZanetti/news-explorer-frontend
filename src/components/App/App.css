@@ -4,7 +4,7 @@
   min-height: 100vh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .app {
     width: 100%;
     overflow-x: hidden;

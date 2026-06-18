@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../Header/Header";
 import About from "../About/About";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
@@ -12,10 +13,14 @@ function Main({
   error,
   handleVisibleCount,
   hasSearched,
+  onOpenModal,
 }) {
   return (
     <>
-      <SearchForm handleSearch={handleSearch} />
+      <div className="header__background">
+        <Header onOpenModal={onOpenModal} />
+        <SearchForm handleSearch={handleSearch} />
+      </div>
       <NewsCardList
         articles={articles}
         isLoading={isLoading}

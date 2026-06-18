@@ -48,7 +48,7 @@
   background-color: #e8e8e8;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .newscardlist {
     padding: 40px;
   }
@@ -63,7 +63,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 544px) {
   .newscardlist {
     padding: 24px 16px;
   }

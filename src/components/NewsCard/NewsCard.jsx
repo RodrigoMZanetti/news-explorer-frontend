@@ -34,7 +34,7 @@ function NewsCard({ title, date, description, source, image }) {
       <p className="newscard__date">{formattedDate}</p>
       <h1 className="newscard__title">{title}</h1>
       <p className="newscard__description">{description}</p>
-      <p className="newscard__font">{source}</p>
+      <p className="newscard__source">{source}</p>
     </div>
   );
 }
