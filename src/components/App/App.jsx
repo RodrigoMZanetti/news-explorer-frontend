@@ -6,6 +6,7 @@ import SavedNews from "../SavedNews/SavedNews";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/NewsApi";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState(null);
@@ -14,6 +15,7 @@ function App() {
   const [error, setError] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
   const [hasSearched, setHasSearched] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   async function handleSearch(query) {
     setIsLoading(true);
@@ -45,46 +47,50 @@ function App() {
 
   return (
     <div className="app">
-      <BrowserRouter>
-        <PopupWithForm
-          isOpen={activeModal === "login"}
-          onClose={() => setActiveModal(null)}
-          onSwitch={() => setActiveModal("signup")}
-          title="Entrar"
-          buttonText="Entrar"
-          link="ou Inscreva-se"
-        />
-        <PopupWithForm
-          isOpen={activeModal === "signup"}
-          onClose={() => setActiveModal(null)}
-          onSwitch={() => setActiveModal("login")}
-          title="Inscrever-se"
-          buttonText="Inscrever"
-          link="ou Faça Login"
-        />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                onOpenModal={() => setActiveModal("login")}
-                handleSearch={handleSearch}
-                articles={articles}
-                isLoading={isLoading}
-                visibleCount={visibleCount}
-                error={error}
-                handleVisibleCount={handleVisibleCount}
-                hasSearched={hasSearched}
-              />
-            }
+      <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <BrowserRouter>
+          <PopupWithForm
+            isOpen={activeModal === "login"}
+            onClose={() => setActiveModal(null)}
+            onSwitch={() => setActiveModal("signup")}
+            title="Entrar"
+            buttonText="Entrar"
+            link="ou Inscreva-se"
           />
-          <Route
-            path="/saved-news"
-            element={<SavedNews onOpenModal={() => setActiveModal("login")} />}
+          <PopupWithForm
+            isOpen={activeModal === "signup"}
+            onClose={() => setActiveModal(null)}
+            onSwitch={() => setActiveModal("login")}
+            title="Inscrever-se"
+            buttonText="Inscrever"
+            link="ou Faça Login"
           />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  onOpenModal={() => setActiveModal("login")}
+                  handleSearch={handleSearch}
+                  articles={articles}
+                  isLoading={isLoading}
+                  visibleCount={visibleCount}
+                  error={error}
+                  handleVisibleCount={handleVisibleCount}
+                  hasSearched={hasSearched}
+                />
+              }
+            />
+            <Route
+              path="/saved-news"
+              element={
+                <SavedNews onOpenModal={() => setActiveModal("login")} />
+              }
+            />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
