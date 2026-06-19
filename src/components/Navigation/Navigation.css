@@ -50,12 +50,31 @@
 }
 
 @media (max-width: 544px) {
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .navigation--open {
+    display: flex;
+  }
+
   .navigation__link {
     font-size: 14px;
+    color: #1a1b22;
   }
 
   .navigation__button {
     font-size: 14px;
     padding: 4px 12px;
+    color: #1a1b22;
+    border-color: #1a1b22;
   }
 }

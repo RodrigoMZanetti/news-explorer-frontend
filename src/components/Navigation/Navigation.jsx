@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navigation.css";
 
-function Navigation({ onOpenModal }) {
+function Navigation({ onOpenModal, isMenuOpen }) {
   return (
-    <nav className="navigation">
+    <nav className={`navigation ${isMenuOpen ? "navigation--open" : ""}`}>
       <Link to="/" className="navigation__link">
         Início
       </Link>
