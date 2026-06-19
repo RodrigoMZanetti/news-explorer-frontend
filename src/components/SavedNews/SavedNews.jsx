@@ -6,7 +6,7 @@ import "./SavedNews.css";
 function SavedNews({ onOpenModal }) {
   return (
     <div className="savednews">
-      <Header onOpenModal={onOpenModal} />
+      <Header onOpenModal={onOpenModal} isDark={false} />
       <h1 className="savednews__title">Artigos Salvos</h1>
       <SavedNewsHeader />
     </div>

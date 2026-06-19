@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 
-function Header({ onOpenModal }) {
+function Header({ onOpenModal, isDark = true }) {
   return (
-    <header className="header">
+    <header className={`header ${isDark ? "" : "header--light"}`}>
       <Link to="/" className="header__logo">
         NewsExplorer
       </Link>

@@ -18,6 +18,23 @@
   text-decoration: none;
 }
 
+.header--light .header__logo {
+  color: #1a1b22;
+}
+
+.header--light {
+  border-bottom: 1px solid rgba(26, 27, 34, 0.2);
+}
+
+.header--light .navigation__link,
+.header--light .navigation__button {
+  color: #1a1b22;
+}
+
+.header--light .navigation__button {
+  border-color: #1a1b22;
+}
+
 @media (max-width: 1024px) {
   .header {
     padding: 0 40px;
@@ -33,3 +50,4 @@
     padding: 0 16px;
   }
 }
+
