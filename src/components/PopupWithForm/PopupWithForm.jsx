@@ -1,0 +1,50 @@
+import React, { useEffect } from "react";
+import "./PopupWithForm.css";
+
+function PopupWithForm({ link, title, buttonText, isOpen, onClose, onSwitch }) {
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
+
+  if (!isOpen) return null;
+  return (
+    <div className="popupwithform" onClick={onClose}>
+      <form
+        className="popupwithform__form"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="popupwithform__close-button" onClick={onClose}>
+          X
+        </button>
+        <h1 className="popupwithform__title">{title}</h1>
+        <input
+          className="popupwithform__input"
+          type="email"
+          placeholder="E-mail"
+        />
+        <input
+          className="popupwithform__input"
+          type="password"
+          placeholder="Senha"
+        />
+        {title === "Inscrever-se" && (
+          <input
+            className="popupwithform__input"
+            type="text"
+            placeholder="Nome de usuário"
+          />
+        )}
+        <button className="popupwithform__access-button">{buttonText}</button>
+        <a className="popupwithform__link" onClick={onSwitch}>
+          {link}
+        </a>
+      </form>
+    </div>
+  );
+}
+
+export default PopupWithForm;
