@@ -7,6 +7,7 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/NewsApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { getCurrentUser } from "../../utils/MainApi";
 
 function App() {
   const [activeModal, setActiveModal] = useState(null);
@@ -42,6 +43,21 @@ function App() {
     if (allArticles) {
       setArticles(JSON.parse(allArticles));
       setHasSearched(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    const localStorageToken = localStorage.getItem("token");
+    const baseUrl = import.meta.env.VITE_API_URL;
+    if (localStorageToken) {
+      getCurrentUser(baseUrl, localStorageToken)
+        .then((res) => res.json())
+        .then((userData) => {
+          setCurrentUser(userData);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, []);
 
