@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/NewsApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { getCurrentUser } from "../../utils/MainApi";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [activeModal, setActiveModal] = useState(null);
@@ -77,9 +78,17 @@ function App() {
             isOpen={activeModal === "signup"}
             onClose={() => setActiveModal(null)}
             onSwitch={() => setActiveModal("login")}
+            onSuccess={() => setActiveModal("success")}
             title="Inscrever-se"
             buttonText="Inscrever"
             link="ou Faça Login"
+          />
+          <PopupWithForm
+            isOpen={activeModal === "success"}
+            onClose={() => setActiveModal(null)}
+            onSwitch={() => setActiveModal("login")}
+            title="Cadastro Feito"
+            buttonText="Ir para Login"
           />
           <Routes>
             <Route
@@ -97,10 +106,13 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/saved-news"
               element={
-                <SavedNews onOpenModal={() => setActiveModal("login")} />
+                <ProtectedRoute>
+                  <SavedNews onOpenModal={() => setActiveModal("login")} />
+                </ProtectedRoute>
               }
             />
           </Routes>
