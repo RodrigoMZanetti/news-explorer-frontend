@@ -14,6 +14,7 @@ function Main({
   handleVisibleCount,
   hasSearched,
   onOpenModal,
+  searchQuery,
 }) {
   return (
     <>
@@ -28,6 +29,7 @@ function Main({
         error={error}
         handleVisibleCount={handleVisibleCount}
         hasSearched={hasSearched}
+        searchQuery={searchQuery}
       />
       <About />
     </>

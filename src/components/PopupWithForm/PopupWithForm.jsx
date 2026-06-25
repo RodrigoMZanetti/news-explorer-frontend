@@ -144,7 +144,6 @@ function PopupWithForm({
           X
         </button>
         <h1 className="popupwithform__title">{title}</h1>
-
         {title !== "Cadastro Feito" && (
           <>
             <input
@@ -166,7 +165,6 @@ function PopupWithForm({
             />
           </>
         )}
-
         {title === "Inscrever-se" && (
           <input
             className="popupwithform__input"
@@ -177,11 +175,9 @@ function PopupWithForm({
             value={name}
           />
         )}
-
         {title === "Cadastro Feito" && (
           <p>Cadastro feito com sucesso. Faça login!</p>
         )}
-
         {formError && (
           <span className="popupwithform__formError">{formError}</span>
         )}
@@ -200,10 +196,11 @@ function PopupWithForm({
         >
           {buttonText}
         </button>
-
-        <a className="popupwithform__link" onClick={onSwitch}>
-          {link}
-        </a>
+        {title !== "Cadastro Feito" && (
+          <a className="popupwithform__link" onClick={onSwitch}>
+            {link}
+          </a>
+        )}
       </form>
     </div>
   );

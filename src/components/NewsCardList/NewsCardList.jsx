@@ -10,6 +10,7 @@ function NewsCardList({
   error,
   handleVisibleCount,
   hasSearched,
+  searchQuery,
 }) {
   if (!hasSearched) return null;
   return (
@@ -36,6 +37,8 @@ function NewsCardList({
                   description={article.description}
                   source={article.source.name}
                   image={article.urlToImage}
+                  searchQuery={searchQuery}
+                  link={article.url}
                 />
               </li>
             );

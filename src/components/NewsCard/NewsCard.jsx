@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./NewsCard.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { createArticle } from "../../utils/MainApi";
 
 function NewsCard({
   title,
@@ -9,12 +11,32 @@ function NewsCard({
   image,
   keyword,
   onDelete,
+  searchQuery,
+  link,
 }) {
   const formattedDate = new Date(date).toLocaleDateString("pt-BR", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
+
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+
+  function handleSave() {
+    const token = localStorage.getItem("token");
+    const baseUrl = import.meta.env.VITE_API_URL;
+    createArticle(
+      baseUrl,
+      searchQuery,
+      title,
+      description,
+      date,
+      source,
+      link,
+      image,
+      token,
+    );
+  }
 
   return (
     <div className="newscard">
@@ -23,6 +45,7 @@ function NewsCard({
       <button
         className="newscard__icon"
         title="Faça o login para salvar os artigos"
+        onClick={handleSave}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

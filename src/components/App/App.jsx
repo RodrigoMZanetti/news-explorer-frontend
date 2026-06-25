@@ -18,10 +18,12 @@ function App() {
   const [visibleCount, setVisibleCount] = useState(3);
   const [hasSearched, setHasSearched] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(null);
 
   async function handleSearch(query) {
     setIsLoading(true);
     setHasSearched(true);
+    setSearchQuery(query);
     try {
       const resultado = await searchNews(query);
       setArticles(resultado.articles);
@@ -103,6 +105,7 @@ function App() {
                   error={error}
                   handleVisibleCount={handleVisibleCount}
                   hasSearched={hasSearched}
+                  searchQuery={searchQuery}
                 />
               }
             />
@@ -110,7 +113,7 @@ function App() {
             <Route
               path="/saved-news"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute onOpenModal={() => setActiveModal("login")}>
                   <SavedNews onOpenModal={() => setActiveModal("login")} />
                 </ProtectedRoute>
               }
