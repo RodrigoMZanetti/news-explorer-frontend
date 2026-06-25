@@ -1,7 +1,15 @@
 import React from "react";
 import "./NewsCard.css";
 
-function NewsCard({ title, date, description, source, image }) {
+function NewsCard({
+  title,
+  date,
+  description,
+  source,
+  image,
+  keyword,
+  onDelete,
+}) {
   const formattedDate = new Date(date).toLocaleDateString("pt-BR", {
     day: "numeric",
     month: "long",
@@ -11,6 +19,7 @@ function NewsCard({ title, date, description, source, image }) {
   return (
     <div className="newscard">
       <img className="newscard__image" alt={title} src={image} />
+      {keyword && <span className="newscard__keyword">{keyword}</span>}
       <button
         className="newscard__icon"
         title="Faça o login para salvar os artigos"
@@ -31,6 +40,11 @@ function NewsCard({ title, date, description, source, image }) {
           />
         </svg>
       </button>
+      {onDelete && (
+        <button className="newscard__delete" onClick={onDelete}>
+          🗑️
+        </button>
+      )}
       <p className="newscard__date">{formattedDate}</p>
       <h1 className="newscard__title">{title}</h1>
       <p className="newscard__description">{description}</p>

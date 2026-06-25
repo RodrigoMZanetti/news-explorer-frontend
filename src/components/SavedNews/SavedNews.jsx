@@ -2,13 +2,23 @@ import React, { useState, useEffect, useContext } from "react";
 import Header from "../Header/Header";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import "./SavedNews.css";
-import { getArticles } from "../../utils/MainApi";
+import { getArticles, deleteArticle } from "../../utils/MainApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import NewsCard from "../NewsCard/NewsCard";
 
 function SavedNews({ onOpenModal }) {
   const [savedArticles, setSavedArticles] = useState([]);
   const { currentUser } = useContext(CurrentUserContext);
+
+  function handleDeleteArticle(articleId) {
+    const token = localStorage.getItem("token");
+    const baseUrl = import.meta.env.VITE_API_URL;
+    deleteArticle(baseUrl, token, articleId).then(() => {
+      setSavedArticles(
+        savedArticles.filter((article) => article._id !== articleId),
+      );
+    });
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -53,6 +63,7 @@ function SavedNews({ onOpenModal }) {
                 source={article.fonte}
                 image={article.image}
                 description={article.text}
+                onDelete={() => handleDeleteArticle(article._id)}
               />
             </li>
           );
