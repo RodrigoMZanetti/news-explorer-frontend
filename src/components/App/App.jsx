@@ -24,6 +24,7 @@ function App() {
     setIsLoading(true);
     setHasSearched(true);
     setSearchQuery(query);
+    localStorage.setItem("searchQuery", query);
     try {
       const resultado = await searchNews(query);
       setArticles(resultado.articles);
@@ -43,9 +44,13 @@ function App() {
 
   useEffect(() => {
     const allArticles = localStorage.getItem("articles");
+    const savedQuery = localStorage.getItem("searchQuery");
     if (allArticles) {
       setArticles(JSON.parse(allArticles));
       setHasSearched(true);
+    }
+    if (savedQuery) {
+      setSearchQuery(savedQuery);
     }
   }, []);
 
