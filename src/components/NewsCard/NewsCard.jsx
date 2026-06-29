@@ -15,6 +15,7 @@ function NewsCard({
   link,
   onOpenLoginModal,
   savedArticles = [],
+  setSavedArticles,
 }) {
   const formattedDate = new Date(date).toLocaleDateString("pt-BR", {
     day: "numeric",
@@ -35,7 +36,11 @@ function NewsCard({
     }
 
     if (savedArticle) {
-      deleteArticle(baseUrl, token, savedArticle._id);
+      deleteArticle(baseUrl, token, savedArticle._id).then(() => {
+        setSavedArticles(
+          savedArticles.filter((article) => article._id !== savedArticle._id),
+        );
+      });
       return;
     }
 
@@ -49,7 +54,11 @@ function NewsCard({
       link,
       image,
       token,
-    );
+    )
+      .then((res) => res.json())
+      .then((newArticle) => {
+        setSavedArticles([...savedArticles, newArticle]);
+      });
   }
 
   return (
@@ -59,7 +68,7 @@ function NewsCard({
 
       {!onDelete && (
         <button
-          className="newscard__icon"
+          className={`newscard__icon ${savedArticle ? "newscard__icon--saved" : ""}`}
           title="Faça o login para salvar os artigos"
           onClick={handleSave}
         >

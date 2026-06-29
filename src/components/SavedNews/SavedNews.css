@@ -21,7 +21,12 @@
 
 .savednews__list {
   list-style: none;
-  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  padding: 0 104px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {

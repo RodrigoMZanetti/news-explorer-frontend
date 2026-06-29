@@ -17,6 +17,7 @@ function Main({
   searchQuery,
   onOpenLoginModal,
   savedArticles,
+  setSavedArticles,
 }) {
   return (
     <>
@@ -34,6 +35,7 @@ function Main({
         searchQuery={searchQuery}
         onOpenLoginModal={onOpenLoginModal}
         savedArticles={savedArticles}
+        setSavedArticles={setSavedArticles}
       />
       <About />
     </>

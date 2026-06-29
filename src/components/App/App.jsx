@@ -135,6 +135,7 @@ function App() {
                   onOpenLoginModal={() => setActiveModal("login")}
                   searchQuery={searchQuery}
                   savedArticles={savedArticles}
+                  setSavedArticles={setSavedArticles}
                 />
               }
             />

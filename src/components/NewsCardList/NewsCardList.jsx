@@ -13,6 +13,7 @@ function NewsCardList({
   searchQuery,
   onOpenLoginModal,
   savedArticles,
+  setSavedArticles,
 }) {
   if (!hasSearched) return null;
   return (
@@ -43,6 +44,7 @@ function NewsCardList({
                   link={article.url}
                   onOpenLoginModal={onOpenLoginModal}
                   savedArticles={savedArticles}
+                  setSavedArticles={setSavedArticles}
                 />
               </li>
             );
