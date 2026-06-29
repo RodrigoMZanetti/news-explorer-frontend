@@ -15,6 +15,8 @@ function Main({
   hasSearched,
   onOpenModal,
   searchQuery,
+  onOpenLoginModal,
+  savedArticles,
 }) {
   return (
     <>
@@ -30,6 +32,8 @@ function Main({
         handleVisibleCount={handleVisibleCount}
         hasSearched={hasSearched}
         searchQuery={searchQuery}
+        onOpenLoginModal={onOpenLoginModal}
+        savedArticles={savedArticles}
       />
       <About />
     </>

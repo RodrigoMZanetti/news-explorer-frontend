@@ -53,7 +53,7 @@ function SavedNews({ onOpenModal }) {
         amount={savedArticles.length}
         keywords={keywordsText}
       />
-      <ul>
+      <ul className="savednews__list">
         {savedArticles.map((article) => {
           return (
             <li key={article._id}>

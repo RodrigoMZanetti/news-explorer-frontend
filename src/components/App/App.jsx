@@ -7,7 +7,7 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Footer from "../Footer/Footer";
 import { searchNews } from "../../utils/NewsApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { getCurrentUser } from "../../utils/MainApi";
+import { getArticles, getCurrentUser } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
@@ -19,6 +19,8 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [searchQuery, setSearchQuery] = useState(null);
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   async function handleSearch(query) {
     setIsLoading(true);
@@ -62,12 +64,32 @@ function App() {
         .then((res) => res.json())
         .then((userData) => {
           setCurrentUser(userData);
+          setIsCheckingAuth(false);
+        })
+        .catch((error) => {
+          setIsCheckingAuth(false);
+          console.log(error);
+        });
+    } else {
+      setIsCheckingAuth(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const localStorageToken = localStorage.getItem("token");
+    const baseUrl = import.meta.env.VITE_API_URL;
+
+    if (localStorageToken) {
+      getArticles(baseUrl, localStorageToken)
+        .then((res) => res.json())
+        .then((userData) => {
+          setSavedArticles(userData);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-  }, []);
+  }, [currentUser]);
 
   return (
     <div className="app">
@@ -110,7 +132,9 @@ function App() {
                   error={error}
                   handleVisibleCount={handleVisibleCount}
                   hasSearched={hasSearched}
+                  onOpenLoginModal={() => setActiveModal("login")}
                   searchQuery={searchQuery}
+                  savedArticles={savedArticles}
                 />
               }
             />
@@ -118,7 +142,10 @@ function App() {
             <Route
               path="/saved-news"
               element={
-                <ProtectedRoute onOpenModal={() => setActiveModal("login")}>
+                <ProtectedRoute
+                  onOpenModal={() => setActiveModal("login")}
+                  isCheckingAuth={isCheckingAuth}
+                >
                   <SavedNews onOpenModal={() => setActiveModal("login")} />
                 </ProtectedRoute>
               }

@@ -11,6 +11,8 @@ function NewsCardList({
   handleVisibleCount,
   hasSearched,
   searchQuery,
+  onOpenLoginModal,
+  savedArticles,
 }) {
   if (!hasSearched) return null;
   return (
@@ -39,6 +41,8 @@ function NewsCardList({
                   image={article.urlToImage}
                   searchQuery={searchQuery}
                   link={article.url}
+                  onOpenLoginModal={onOpenLoginModal}
+                  savedArticles={savedArticles}
                 />
               </li>
             );

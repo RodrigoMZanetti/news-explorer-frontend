@@ -2,19 +2,23 @@ import React, { useContext, useEffect } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({ children, onOpenModal }) {
+function ProtectedRoute({ children, onOpenModal, isCheckingAuth }) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!isCheckingAuth && !currentUser) {
       onOpenModal();
     }
-  }, []);
+  }, [isCheckingAuth, currentUser]);
 
-  if (currentUser) {
-    return children;
+  if (isCheckingAuth === true) {
+    return null;
   } else {
-    return <Navigate to="/" />;
+    if (currentUser) {
+      return children;
+    } else {
+      return <Navigate to="/" />;
+    }
   }
 }
 
