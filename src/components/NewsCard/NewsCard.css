@@ -7,6 +7,11 @@
   overflow: hidden;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.newscard:hover {
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.16);
 }
 
 .newscard__image {
@@ -25,6 +30,14 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
+}
+
+.newscard__icon:hover {
+  color: #1a1b22;
+}
+
+.newscard__icon--saved {
+  color: #2192f6;
 }
 
 .newscard__date {
@@ -67,6 +80,18 @@
   letter-spacing: 0.4px;
 }
 
+.newscard__delete {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
 @media (max-width: 1024px) {
   .newscard__title {
     font-size: 18px;
@@ -85,29 +110,4 @@
   .newscard__title {
     font-size: 16px;
   }
-}
-
-.newscard {
-  transition: box-shadow 0.3s ease;
-}
-
-.newscard:hover {
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.16);
-}
-
-.newscard__icon {
-  transition: opacity 0.3s ease;
-}
-
-.newscard__icon:hover {
-  opacity: 0.7;
-}
-
-.newscard__icon {
-  color: #b6bcbf;
-  transition: color 0.3s ease;
-}
-
-.newscard__icon:hover {
-  color: #1a1b22;
 }

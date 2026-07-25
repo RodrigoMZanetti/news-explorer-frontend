@@ -10,6 +10,10 @@ function NewsCardList({
   error,
   handleVisibleCount,
   hasSearched,
+  searchQuery,
+  onOpenLoginModal,
+  savedArticles,
+  setSavedArticles,
 }) {
   if (!hasSearched) return null;
   return (
@@ -36,6 +40,11 @@ function NewsCardList({
                   description={article.description}
                   source={article.source.name}
                   image={article.urlToImage}
+                  searchQuery={searchQuery}
+                  link={article.url}
+                  onOpenLoginModal={onOpenLoginModal}
+                  savedArticles={savedArticles}
+                  setSavedArticles={setSavedArticles}
                 />
               </li>
             );
