@@ -13,15 +13,15 @@ function About() {
       <div className="about__text-container">
         <h1 className="about__title">Sobre o autor</h1>
         <p className="about__text">
-          Sou Rodrigo, sempre fui apaixonado por tecnologia e, em 2022, comecei
-          a me interessar por desenvolvimento de sites e aplicativos. Estudei
-          por conta própria até decidir, em 2025, transformar esse hobby em
-          profissão através de um bootcamp com foco no mercado de trabalho.
+          I'm Rodrigo. I've always been passionate about technology, and in
+          2022, I started getting interested in web and app development. I
+          studied on my own until, in 2025, I decided to turn that hobby into a
+          career through a job-focused bootcamp.
         </p>
         <p className="about__text">
-          Desde então venho desenvolvendo projetos com HTML, CSS, JavaScript e
-          bibliotecas como React e Redux, além de aplicações full-stack, sempre
-          buscando aprender e evoluir como desenvolvedor.
+          Since then, I've been building projects with HTML, CSS, JavaScript, TS
+          and libraries like React and Redux, as well as full-stack
+          applications, always looking to learn and grow as a developer.
         </p>
       </div>
     </section>

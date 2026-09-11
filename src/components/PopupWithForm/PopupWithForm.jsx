@@ -61,7 +61,7 @@ function PopupWithForm({
     const baseUrl = import.meta.env.VITE_API_URL;
 
     e.preventDefault();
-    if (title === "Inscrever-se") {
+    if (title === "Sign up") {
       signUp(baseUrl, email, name, password)
         .then((res) => {
           const isSuccess = res.ok;
@@ -81,7 +81,7 @@ function PopupWithForm({
         .catch((err) => console.error(err));
       return;
     }
-    if (title === "Entrar") {
+    if (title === "Log in") {
       signIn(baseUrl, email, password)
         .then((res) => {
           const isSuccess = res.ok;
@@ -93,7 +93,7 @@ function PopupWithForm({
         })
         .then(({ data, isSuccess }) => {
           if (!isSuccess) {
-            throw new Error(data.message || "Houve um erro no Login.");
+            throw new Error(data.message || "There was a login error.");
           }
 
           localStorage.setItem("token", data.token);
@@ -110,7 +110,7 @@ function PopupWithForm({
         })
         .then(({ result, isSuccess }) => {
           if (!isSuccess) {
-            throw new Error(result.message || "Erro ao buscar usuário.");
+            throw new Error(result.message || "Error fetching user.");
           }
 
           setCurrentUser(result);
@@ -118,14 +118,14 @@ function PopupWithForm({
         })
         .catch((error) => {
           setFormError(
-            `Error: ${error.message}! Houve um erro no Login, tente novamente!`,
+            `Error: ${error.message}! There was a login error, please try again!`,
           );
         });
 
       return;
     }
 
-    if (title === "Cadastro Feito") {
+    if (title === "Registration Completed") {
       e.preventDefault();
       onSwitch();
       return;
@@ -144,7 +144,7 @@ function PopupWithForm({
           X
         </button>
         <h1 className="popupwithform__title">{title}</h1>
-        {title !== "Cadastro Feito" && (
+        {title !== "Registration Completed" && (
           <>
             <input
               className="popupwithform__input"
@@ -158,25 +158,25 @@ function PopupWithForm({
             <input
               className="popupwithform__input"
               type="password"
-              placeholder="Senha"
+              placeholder="Password"
               required
               onChange={checkPassword}
               value={password}
             />
           </>
         )}
-        {title === "Inscrever-se" && (
+        {title === "Sign up" && (
           <input
             className="popupwithform__input"
             type="text"
-            placeholder="Nome de usuário"
+            placeholder="Username"
             required
             onChange={checkName}
             value={name}
           />
         )}
-        {title === "Cadastro Feito" && (
-          <p>Cadastro feito com sucesso. Faça login!</p>
+        {title === "Registration Completed" && (
+          <p>Registration completed successfully. Please log in!</p>
         )}
         {formError && (
           <span className="popupwithform__formError">{formError}</span>
@@ -184,11 +184,11 @@ function PopupWithForm({
         <button
           className="popupwithform__access-button"
           disabled={
-            title === "Inscrever-se"
+            title === "Sign up"
               ? !(emailValidation && passwordValidation && nameValidation)
-              : title === "Entrar"
+              : title === "Log in"
                 ? !(emailValidation && passwordValidation)
-                : title === "Cadastro Feito"
+                : title === "Registration Completed"
                   ? false
                   : true
           }
@@ -196,7 +196,7 @@ function PopupWithForm({
         >
           {buttonText}
         </button>
-        {title !== "Cadastro Feito" && (
+        {title !== "Registration Completed" && (
           <a className="popupwithform__link" onClick={onSwitch}>
             {link}
           </a>

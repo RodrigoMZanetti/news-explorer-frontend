@@ -7,7 +7,7 @@ function SearchForm({ handleSearch }) {
 
   function handleSubmit(query) {
     if (query === "") {
-      setError("Por favor, insira uma palavra-chave");
+      setError("Please enter a keyword");
       return;
     } else {
       handleSearch(query);
@@ -17,14 +17,14 @@ function SearchForm({ handleSearch }) {
 
   return (
     <div className="searchform">
-      <h1 className="searchform__title">O que está acontecendo no mundo?</h1>
-      <h2 className="searchform__subtitle">Encontre as últimas notícias...</h2>
+      <h1 className="searchform__title"> What's happening in the world?</h1>
+      <h2 className="searchform__subtitle">Find the latest news...</h2>
 
       <form className="searchform__form">
         <input
           className="searchform__input"
           type="text"
-          placeholder="Inserir tema"
+          placeholder="Enter a topic"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -34,7 +34,7 @@ function SearchForm({ handleSearch }) {
           className="searchform__button"
           onClick={() => handleSubmit(query)}
         >
-          Procurar
+          Search
         </button>
       </form>
     </div>

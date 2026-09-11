@@ -14,20 +14,20 @@ function Navigation({ onOpenModal, isMenuOpen }) {
   return (
     <nav className={`navigation ${isMenuOpen ? "navigation--open" : ""}`}>
       <Link to="/" className="navigation__link">
-        Início
+        Home
       </Link>
       {currentUser ? (
         <>
           <Link to="/saved-news" className="navigation__link">
-            Artigos Salvos
+            Saved Articles
           </Link>
           <button className="navigation__button" onClick={handleLogout}>
-            {currentUser.name} • Sair
+            {currentUser.name} • Logout
           </button>
         </>
       ) : (
         <button className="navigation__button" onClick={onOpenModal}>
-          Entrar
+          Login
         </button>
       )}
     </nav>

@@ -5,14 +5,12 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <p className="footer__copyright">
-        © 2021 Supersite, desenvolvido pela News API
-      </p>
+      <p className="footer__copyright">© 2021 Supersite, powered by News API</p>
       <Link to="/" className="footer__link">
-        Início
+        Home
       </Link>
       <Link to="/" className="footer__link">
-        Triplenten
+        TripleTen
       </Link>
 
       <a

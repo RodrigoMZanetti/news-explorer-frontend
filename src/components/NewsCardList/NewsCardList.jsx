@@ -18,18 +18,17 @@ function NewsCardList({
   if (!hasSearched) return null;
   return (
     <div className="newscardlist">
-      <h1 className="newscardlist__title">Procurar resultados</h1>
+      <h1 className="newscardlist__title">Search results</h1>
       <ul className="newscardlist__list">
         {isLoading === true ? (
           <Preloader />
         ) : error ? (
           <p>
-            Desculpe, algo deu errado durante a solicitação. Pode haver um
-            problema de conexão ou o servidor pode estar inativo. Por favor,
-            tente novamente mais tarde.
+            Sorry, something went wrong with the request. There may be a
+            connection issue or the server may be down. Please try again later.
           </p>
         ) : articles.length === 0 ? (
-          <p>Nada encontrado</p>
+          <p>Nothing found</p>
         ) : (
           articles.slice(0, visibleCount).map((article) => {
             return (
@@ -53,7 +52,7 @@ function NewsCardList({
       </ul>
       {visibleCount >= articles.length ? null : (
         <button className="newscardlist__button" onClick={handleVisibleCount}>
-          Mostrar mais
+          Show more
         </button>
       )}
     </div>

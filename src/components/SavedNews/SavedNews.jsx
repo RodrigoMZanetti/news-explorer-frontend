@@ -47,7 +47,7 @@ function SavedNews({ onOpenModal }) {
   return (
     <div className="savednews">
       <Header onOpenModal={onOpenModal} isDark={false} />
-      <h1 className="savednews__title">Artigos Salvos</h1>
+      <h1 className="savednews__title">Saved Articles</h1>
       <SavedNewsHeader
         name={currentUser?.name}
         amount={savedArticles.length}

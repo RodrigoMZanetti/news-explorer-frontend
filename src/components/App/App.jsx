@@ -32,7 +32,7 @@ function App() {
       setArticles(resultado.articles);
       localStorage.setItem("articles", JSON.stringify(resultado.articles));
     } catch (error) {
-      console.error("Ocorreu um erro:", error);
+      console.error("An error occurred:", error);
       setError(true);
     } finally {
       setIsLoading(false);
@@ -99,25 +99,25 @@ function App() {
             isOpen={activeModal === "login"}
             onClose={() => setActiveModal(null)}
             onSwitch={() => setActiveModal("signup")}
-            title="Entrar"
-            buttonText="Entrar"
-            link="ou Inscreva-se"
+            title="Log in"
+            buttonText="Log in"
+            link="or Sign up"
           />
           <PopupWithForm
             isOpen={activeModal === "signup"}
             onClose={() => setActiveModal(null)}
             onSwitch={() => setActiveModal("login")}
             onSuccess={() => setActiveModal("success")}
-            title="Inscrever-se"
-            buttonText="Inscrever"
-            link="ou Faça Login"
+            title="Sign up"
+            buttonText="Sign up"
+            link="Login in"
           />
           <PopupWithForm
             isOpen={activeModal === "success"}
             onClose={() => setActiveModal(null)}
             onSwitch={() => setActiveModal("login")}
-            title="Cadastro Feito"
-            buttonText="Ir para Login"
+            title="Registration Completed"
+            buttonText="Go to Log in"
           />
           <Routes>
             <Route

@@ -17,7 +17,7 @@ function NewsCard({
   savedArticles = [],
   setSavedArticles,
 }) {
-  const formattedDate = new Date(date).toLocaleDateString("pt-BR", {
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -69,7 +69,7 @@ function NewsCard({
       {!onDelete && (
         <button
           className={`newscard__icon ${savedArticle ? "newscard__icon--saved" : ""}`}
-          title="Faça o login para salvar os artigos"
+          title="Log in to save articles"
           onClick={handleSave}
         >
           <svg

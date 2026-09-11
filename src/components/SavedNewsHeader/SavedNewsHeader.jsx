@@ -4,13 +4,11 @@ import "./SavedNewsHeader.css";
 function SavedNewsHeader({ name, amount, keywords }) {
   return (
     <div className="savednewsheader">
-      <p className="savednewsheader__text">Artigos salvos</p>
+      <p className="savednewsheader__text">Saved Articles</p>
       <h1 className="savednewsheader__title">
-        {name}, você tem {amount} artigos salvos
+        {name}, you have {amount} saved {amount === 1 ? "article" : "articles"}
       </h1>
-      <p className="savednewsheader__keywords">
-        "Por palavras-chave: {keywords}"
-      </p>
+      <p className="savednewsheader__keywords">By keywords: {keywords}</p>
     </div>
   );
 }
