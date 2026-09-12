@@ -11,7 +11,7 @@ function About() {
         className="about__image"
       />
       <div className="about__text-container">
-        <h1 className="about__title">Sobre o autor</h1>
+        <h1 className="about__title">About the author</h1>
         <p className="about__text">
           I'm Rodrigo. I've always been passionate about technology, and in
           2022, I started getting interested in web and app development. I

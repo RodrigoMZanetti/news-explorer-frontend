@@ -13,7 +13,7 @@ function getNewsToDate() {
 
 export function searchNews(query) {
   return fetch(
-    `${BASE_URL}?q=${query}&apiKey=${API_KEY}&from=${getNewsFromDate()}&to=${getNewsToDate()}&pageSize=100`,
+    `${BASE_URL}?q=${encodeURIComponent(query)}&apiKey=${API_KEY}&from=${getNewsFromDate()}&to=${getNewsToDate()}&pageSize=100`,
   )
     .then((response) => {
       if (!response.ok) {

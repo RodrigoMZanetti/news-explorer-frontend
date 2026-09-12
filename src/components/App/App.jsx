@@ -25,8 +25,10 @@ function App() {
   async function handleSearch(query) {
     setIsLoading(true);
     setHasSearched(true);
+    setError(false);
     setSearchQuery(query);
     localStorage.setItem("searchQuery", query);
+
     try {
       const resultado = await searchNews(query);
       setArticles(resultado.articles);
@@ -48,8 +50,13 @@ function App() {
     const allArticles = localStorage.getItem("articles");
     const savedQuery = localStorage.getItem("searchQuery");
     if (allArticles) {
-      setArticles(JSON.parse(allArticles));
-      setHasSearched(true);
+      try {
+        setArticles(JSON.parse(allArticles));
+        setHasSearched(true);
+      } catch (error) {
+        console.error("Dado corrompido no localStorage:", error);
+        localStorage.removeItem("articles");
+      }
     }
     if (savedQuery) {
       setSearchQuery(savedQuery);
@@ -61,7 +68,13 @@ function App() {
     const baseUrl = import.meta.env.VITE_API_URL;
     if (localStorageToken) {
       getCurrentUser(baseUrl, localStorageToken)
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            localStorage.removeItem("token");
+            throw new Error("Sessão inválida");
+          }
+          return res.json();
+        })
         .then((userData) => {
           setCurrentUser(userData);
           setIsCheckingAuth(false);
@@ -81,7 +94,12 @@ function App() {
 
     if (localStorageToken) {
       getArticles(baseUrl, localStorageToken)
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Falha ao buscar artigos salvos");
+          }
+          return res.json();
+        })
         .then((userData) => {
           setSavedArticles(userData);
         })
